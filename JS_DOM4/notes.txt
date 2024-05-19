@@ -1,0 +1,110 @@
+API:
+it is an intermedeator between me and server 
+
+get/post/put/delete call kya hota hai?
+
+features of Async code
+clean and concise
+better error handling
+easy debugging
+
+
+
+
+
+
+
+Promises:  //its an async operation
+either its full-fill or it will break
+
+let meraPromise = new Promise(function(resolve, reject){
+    colsole.log("im inside promise");
+    resolve(1998);
+})
+console.log('pehela');
+
+//next example with async code
+let meraPromise = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        console.log('Im inside promise');
+    }, 5000);
+    //resolve(2233);
+    reject(new Error('Bhai saab error aya hai'));
+});
+console.log('pehela');
+
+promise is in one of these states
+1. pending
+2. fullfilled
+3. rejected
+
+// now we will run two Promises
+let merapromise1 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+    console.log("this is my promise 1");
+    }, 5000);    
+});
+let merapromise2 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        console.log('this is my promise2');
+    }, 3000)
+})
+console.log('pehela');
+
+//now there are 2 methods :
+1. then (it handles the data which comes under fulfilled value)
+2. catch (it handles the data which comes under error )
+
+let merapromise1 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+    console.log("this is my promise 1");
+    }, 5000);  
+   // resolve(1234);  
+   reject(new Error('bhai error is coming'));
+
+});
+meraPromise1.then((value) => {console.log(value)});
+meraPromise1.catch((error) => {console.log("Recieved an error")});
+
+//we can add the error inside the then method
+meraPromise1.then((value) => {console.log(value)}, (error) => {console.log("Recieved an error")});
+
+
+
+//now we will play with multiple promises which is depend upon one another
+let waadaa1 = new Promise(function(resolve, reject){
+    setTimeout(() => {
+        console.log('setimeout1 started');
+    },2000);
+    resolve(true);
+})
+waadaa1.then(() =>{
+    let waadaa2 = new Promise(function(resolve, reject){
+        setTimeout(() => {
+            console.log("settimeout2 started");
+        }, 3000)
+        resolve("waadaa 2 resolved");
+    })
+    return waadaa2;
+}).then((value) => console.log(value));
+
+//promise chaining?? -> when a promise is connected to a then and the then is connected to the next promise and the chain goes on 
+this phenomenon is called promise chaining
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

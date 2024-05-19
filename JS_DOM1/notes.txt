@@ -1,0 +1,136 @@
+window -> its a top level entity and a global object which creates browser.
+DOM -> Document Object Model. convert the whole js code into Document
+BOM -> Browser  Object Model. It allows js to talk to browser about matters rather than content of page
+
+Charactor(h,t,m,l) -> tags(<html>) -> token -> nodes -> DOM
+
+
+For accessing elements we use :-
+
+getElementbyID('heading') -> It is a method, basically fetch the entire element. 
+It is called on document object.
+It returns a single object.
+
+
+getElementsbyClassName('') -> It is a method, which retruns array-like(HTML collection) objects of all child elements which have all the given class name(s).
+getElementsbyTagName('') ->
+They return multiple objects.
+
+keep in mind:
+1. both methods use document object
+2. both methods return multiple items
+3. the list returns are arry-like objects
+
+$0 -> use the hack inside the console after highlight the element 
+
+
+Quary Selector-> Its a method, which also fetch elements like
+quarySelector('#header') -> it gives only id, called header
+quarySelector('.header') -> it gives me only, class element called header
+quarySelector('header') -> it gives only the first tag which is named header
+1. It gives us only first one single object.
+
+quarySelectorAll('.hidden') -> multiple elements are fetched.
+
+
+
+
+Suppose we have a webpage and i need to update its content so we have 4 properties to do this
+1.innerHTML ->
+get an element/ all of its decendent HTML content. 
+set an element's HTML content.
+it renders all the tags 
+
+2.outerHTML ->H/W
+
+3.textcontent -> get/set the textual content. it doesnt render the tags, it shows as it is written
+
+4.innertext -> get/set the textual content. But it shows lesser content. "display:hidden" contents are not showed in here.
+
+difference between innerHTML and textcontent
+difference between innertext and textcontent
+
+
+
+
+
+//add a new element using JS 
+let newPara = document.createElement('p'); //for creation
+content.appendChild(newPara);   //for adding
+
+
+
+//creating text note
+//so first we will do this in bekar way
+let newPara = document.createElement('p');
+let textPara = document.createTextnode('I am the text');
+newPara = appendChild(textPara);
+content.appendChild(newPara);
+
+
+//easy way is...
+let myPara = document.createElement('p');
+myPara.textcontent = 'I am the text';
+content.appendChild(myPara);
+
+now every time we create a new tag it comes in the last so we have another tag where 
+we can add the tags wherever we like -> insertAdjacentElement()
+
+so for using this element we have to use 2 arguments
+1. location/position ->where
+2. HTML text/content to be insert  ->what
+
+beforeBegin
+afterBegin
+beforeEnd 
+afterEnd
+
+ex:
+let content = $0 
+let newText = document.createElement('h3');
+newText.textcontent = 'ABCD';
+content.insertAdjacentElement('beforeBegin', newText);
+content.insertAdjacentElement('afterBegin', newText);
+
+
+For removing we have -> removeChild() 
+for doing this we should have knowledge about -> 
+1.the parent element
+2.the child element to remove
+ex:
+let childElement = document.quarySelector('.class_Name');
+let parentElement = document.quarySelector('.class_Name');
+parentElement.removeChild(childElement);
+
+we can do oter thing when we dont know the parent (HW)
+
+
+
+// till now what we are doing is just adjusting HTML(add, update, remove..etc) using JS
+
+
+
+now we will do it for CSS properties
+
+let content = $0;
+content.style.color = 'red';
+content.style.backgroundcolor = 'white';
+
+//but the drawback is that we can do only one change at a time
+
+content.style.cssText = 'color:green; backgroundcolor:yellow; font-size:4em;'; (//by this we can do multiple changes at a time)
+
+content.setAttribute("style","color:orange; backgroundcolor:yellow; font-size:5em;");
+we can also add id name using the "setAttribute"
+content.setAttribute("id","NewIDadd");
+
+content.className-> it gives string of classes
+typeof content.className // string
+let calssNames = content.className.trim.split(''); //trim used for remove the empty space
+classNames -> now this will an array
+
+content.classList;  // list of class names which is array typeof
+typeof content.classList // object it gives array of classes
+
+toggle() //HW
+contains() //HW

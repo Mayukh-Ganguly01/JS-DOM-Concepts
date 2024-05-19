@@ -1,0 +1,87 @@
+Browser Events: Browser is doing some annoucement something
+what are events?
+how to responds to the events 
+data stored in events
+stop an event
+life cycle of events
+
+events are invisible 
+monitorEvents() //by this we can see triggered events
+ex:monitorEvents(documents);
+
+unmonitorEvents() //turn off the visible events
+
+
+interface is the blurprint in JS which is same as class in C++/java
+
+eventTarget -> It is a top level interface. It is an interface, which is implemented by 
+objects, that can receive events and may have listners for them.
+example: document, p, div, article
+
+eventListener -> it decides what to do after the event triggers
+
+In eventTarget there are 3 methods 
+1. add eventListener()
+2. remove eventListener()
+3. dispatchEvent()
+
+the next thing is "Node" which inherit from "eventTarget"
+
+the next thing is "Element" which inherit from "Node"
+
+
+add eventListener(): (listen to event)/ (Respond to event)/ (Hook into event)
+
+pseudo-code:
+<event-target>.addEventListener(<event-to-listen-for>,<function-to-run-when-event-happened>)
+
+example:
+document.addEventListener('click',function(){
+    console.log("I clicked on document");
+});
+
+content.addEventListener('click',function(){
+    content.style.background= 'red';
+});
+
+
+
+
+//RemoveEventListener
+== vs === 
+== allows type coercion = where js will try to convert the items being compare to same type
+written in index.js file
+for apply RemoveEventListener we have to check
+1. same target (content, document)
+2. same type (click, scroll)
+3. same function 
+
+
+
+
+
+//Phases of an event
+there are 3 phases of an event life cycle
+1. capturing phase
+2. At target phase
+3. bubbling phase
+
+//by default addEventListener executes at bubbling phase
+
+we have to use the third argument thats how we can use the addEventListener in the captureing phase
+example:
+<event-target>.addEventListener(type, function, use-capture{true})
+HW: can we use eventListener in at-target phase
+
+
+
+
+
+The event Object:
+when an event occurs, addEventListener function gets an event-object which has so much information about that event
+
+
+
+//The dafault Action
+.preventDefault() -> we can prevent the default actions.
+implement in JS file

@@ -1,0 +1,85 @@
+performance:
+Today we will learn:-
+1.how we can measure speed of code
+2.how to write efficient and performance code
+3.Event Loop
+
+
+
+now standerd way to measure how long my code takes to run is 
+performance.now();
+
+
+now 2 things are there 
+1. refolow : when we add a new object, a mathematical calculation(position of the element, width, height) takes place. The process which takes 
+place for doing all the mathematical calculation is called reflow.
+2. repaint : after adding the element the new layout is created and this process shows the layout pixel by pixel
+
+so, the best practice is we have to minimize the reflow and repaint
+
+Document Fragment: It is a light weight document object. the additions we are doing over it for them no reflow or repaint happens.
+only 1 reflow and 1 repaint happens.
+
+
+
+
+Call Stack: it is list, which tracks which function is calling. and when a function's execution has been done it removes from 
+the call stack.
+what is single-threading: one command at a time. JS is a single-threaded language.
+
+
+
+
+Event Loop:
+
+synchronous: occuring at the same time.
+async : eventListener is the example of asynchronus function.
+
+in event loop there exist 3 things 
+1. call stack 
+2. browser
+3. Eventqueue
+ 
+now lets take one example
+console.log("abcd");
+element.addEventListener('click', function(){
+    console.log("1234");
+});
+console.log("xyz");
+
+first, the function "console.log("abcd");" comes to the call stack, executes and removed form the call stack
+second, the eventListener comes to the call stack and tells the browser "my mom is calling to do some work, so you will have to do a favor, whenever a someone clicks, executes "1234"" and after saying this it removes form the call stack 
+third, the function "console.log("xyz");" comes to the call stack, executes and removed 
+fourth, the eventListener function comes to the eventQueue when someone "click" then the queue checks the stack is empty or not
+if the stack is not empty, it will not executes the function which is "console.log("1234");", and when it is empty it will run the function "console.log("1234");"
+
+
+the whole process is called eventLoop
+
+
+all the async code uses the JS event loop
+handling is done by browser
+
+
+
+
+
+setTImeout(functon, time) method  // It is an async function
+setTImeout(function(){
+    console.log('hi');
+}, 4000);
+
+now it will executes after 4s it is not a gurentee.
+4s is the minimum time
+like call stack is not empty for 1hr then :)
+
+this method will run code at a leter pointing time
+
+
+
+
+//concurency vs multithreding
+
+
+
+whenever we try to defer something until the stack is clear we use setTimeout
